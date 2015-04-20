@@ -50,10 +50,15 @@ uriEscape = URI.escapeURIString URI.isAllowedInURI
 -- |Returns a mime-type string based on the extension of the passed in
 -- file.
 mime :: FilePath -> String
-mime x  = Map.findWithDefault "text/plain; charset=utf-8" (drop 1 (takeExtension x)) mimeTypes'
+mime x =
+    Map.findWithDefault thedefault (drop 1 (takeExtension x)) mimeTypes'
   where
-    mimeTypes' = mimeTypes `Map.union` Map.fromList [("xhtml", "application/xhtml+xml")]
-
+    mimeTypes' = mimeTypes `Map.union` Map.fromList extra
+    thedefault = "text/plain; charset=utf-8"
+    extra      = [ ("html", "text/html; charset=utf-8")
+                 , ("xhtml", "application/xhtml+xml; charset=utf-8")
+                 , ("cabal", "text/plain; charset=utf-8")
+                 ]
 
 
 -- | Get the raw body of a PUT or POST request.
