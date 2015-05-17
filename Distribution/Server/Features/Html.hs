@@ -1047,7 +1047,7 @@ mkHtmlCandidates HtmlUtilities{..}
           ]
         -- note: each of the lists here should be non-empty, according to PackageIndex
       where showCands pkgs =
-                let desc = packageDescription . pkgDesc . candPkgInfo $ last pkgs
+                let desc = packageSynopsis . pkgDesc . candPkgInfo $ last pkgs
                     pkgname = packageName desc
                 in  [ anchor ! [href $ packageCandidatesUri candidates "" pkgname ] << display pkgname
                     , toHtml ": "

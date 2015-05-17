@@ -37,8 +37,6 @@ import qualified Distribution.Server.Framework.BlobStorage as BlobStorage
 import Data.Time.Clock (UTCTime, getCurrentTime)
 import Data.Time.Format (formatTime)
 import System.Locale (defaultTimeLocale)
-import Data.Map (Map)
-import qualified Data.Map as Map
 import Data.ByteString.Lazy (ByteString)
 import qualified Data.ByteString.Lazy as BS
 import qualified Data.Foldable as Foldable
